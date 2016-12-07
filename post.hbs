@@ -1,0 +1,50 @@
+{{!< default}}
+{{> header}}
+
+<main class="main_port" role="main">
+{{#post}}
+<article class="article_port" role="article" itemscope itemtype="http://schema.org/Article">
+<header class="postheader_port">
+<time class="date_port" datetime="{{date format="YYYY-MM-DD"}}" itemprop="datePublished">{{date format='dddd DD MMM YYYY'}}</time>
+<h1 class="posttitle_port" itemprop="headline">{{title}}</h1>
+</header>
+<div class="postcontent_port" itemprop="articleBody">
+{{content}}
+</div>
+{{#if tags}}
+<div class="posttags_port">
+Tags: {{tags separator=" | "}}
+</div>
+{{/if}}
+    <div class="sharepost_port">
+    <h4 class="share_port">Share this post: &nbsp;</h4>
+    <a class="share_port icon-twitter" target="_blank" href="http://twitter.com/share?text={{title}}&url={{url absolute="true"}}"><span class="hidethis_port">Twitter</span></a>
+    <a class="share_port icon-facebook" target="_blank" href="http://www.facebook.com/sharer.php?u={{url absolute="true"}}"><span class="hidethis_port">Facebook</span></a>
+    <a class="share_port icon-gplus" target="_blank" href="https://plus.google.com/share?url={{url absolute="true"}}"><span class="hidethis_port">Google+</span></a>
+    </div>
+        {{#if author}}
+        <footer class="postfooter_port">
+        <address itemscope itemtype="http://schema.org/Person">
+        {{#if author.image}}
+        <div class="authorimage_port"><img src="{{author.image}}" itemprop="image" /></div>
+        {{/if}}
+        <h4 class="authorname_port"><span itemprop="author">{{author.name}}</span></h4>
+        {{#if author.website}}
+        <div class="authorwebsite_port"><a href="{{author.website}}" itemprop="url">{{author.website}}</a></div>
+        {{/if}}
+        </address>
+        <div class="authorbio_port">
+        <p>{{author.bio}}</p>
+        </div>
+        </footer>
+        {{/if}}
+</article>
+{{/post}}
+{{#if pagination}}
+<div class="pagination_port">
+{{{pagination}}}
+</div>
+{{/if}}
+</main>
+
+{{> footer}}

@@ -1,0 +1,28 @@
+{{!< default}}
+{{> header}}
+
+<main class="main_port" role="main">
+{{#foreach posts}}
+<article class="article_port" role="article" itemscope itemtype="http://schema.org/Article">
+
+<header class="postheader_port">
+<time class="date_port" datetime="{{date format="YYYY-MM-DD"}}" itemprop="datePublished">{{date format='dddd DD MMM YYYY'}}</time>
+<h1 class="posttitle_port" itemprop="headline"><a href="{{{url}}}" rel="bookmark">{{title}}</a></h1>
+</header>
+
+
+{{#if tags}}
+<div class="posttags_port">
+Tags: {{tags separator=" | "}}
+</div>
+{{/if}}
+</article>
+{{/foreach}}
+<div class="pagination_port">
+{{#if pagination}}
+</div>
+{{{pagination}}}
+{{/if}}
+</main>
+
+{{> footer}}
